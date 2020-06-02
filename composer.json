@@ -3,7 +3,7 @@
     "description": "Zotto payments api connector",
     "type": "library",
     "require": {
-        "php": ">=7.2.*",
+        "php": ">=7.2",
         "guzzlehttp/guzzle": "^6.2",
         "predis/predis": "^1.1.1",
         "ext-json": "*"
