@@ -63,7 +63,7 @@ class ZottoConnector
 
             $this->checkException($content, $generateTransactionUrl);
 
-            return $request->getBody()->getContents();
+            return $content;
 
         } catch (\Exception $exception) {
             throw new ZottoCallMethodCallException($generateTransactionUrl, $exception->getMessage());
