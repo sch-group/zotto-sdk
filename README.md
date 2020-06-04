@@ -21,4 +21,4 @@ Create transaction
                    Transaction::CARD_REDIRECT_TYPE
         );
        
-       $html = $lient->generateTransactionUrl($transaction);
+       $html = $lient->generatePaymentHtml($transaction);

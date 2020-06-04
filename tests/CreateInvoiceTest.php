@@ -40,7 +40,7 @@ class CreateInvoiceTest extends InitTest
         );
         $this->expectException(ZottoCallMethodCallException::class);
 
-        $link = $this->client->generateTransactionUrl($transaction);
+        $link = $this->client->generatePaymentHtml($transaction);
 
     }
 }

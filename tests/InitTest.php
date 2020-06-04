@@ -53,7 +53,7 @@ class InitTest extends TestCase
             Transaction::CARD_REDIRECT_TYPE
         );
 
-        return $this->client->generateTransactionUrl($transaction);
+        return $this->client->generatePaymentHtml($transaction);
     }
 
 }

@@ -34,7 +34,7 @@ class ZottoConnector
      * @return mixed
      * @throws ZottoCallMethodCallException
      */
-    public function generateTransactionUrl(Transaction $transaction): string
+    public function generatePaymentHtml(Transaction $transaction): string
     {
         $generateTransactionUrl = $this->config->getHost() . '/api/v1/checkoutpay/payment';
 
@@ -60,6 +60,8 @@ class ZottoConnector
                 'form_params' => $body
             ]);
             $content = $request->getBody()->getContents();
+            echo "content";
+            print_r($content);
 
             $this->checkException($content, $generateTransactionUrl);
 
