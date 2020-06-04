@@ -60,8 +60,6 @@ class ZottoConnector
                 'form_params' => $body
             ]);
             $content = $request->getBody()->getContents();
-            echo "content";
-            print_r($content);
 
             $this->checkException($content, $generateTransactionUrl);
 
