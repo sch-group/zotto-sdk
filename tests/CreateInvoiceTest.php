@@ -15,9 +15,9 @@ class CreateInvoiceTest extends InitTest
      */
     public function testCreateSuccess()
     {
-//        $link = $this->createInvoice();
-//        print_r($link);
-//        $this->assertTrue(is_string($link));
+        $link = $this->createInvoice();
+        print_r($link);
+        $this->assertTrue(is_string($link));
     }
 
     /**
@@ -41,29 +41,6 @@ class CreateInvoiceTest extends InitTest
         $this->expectException(ZottoCallMethodCallException::class);
 
         $link = $this->client->generatePaymentHtml($transaction);
-
-    }
-
-    public function testCreateInvoice()
-    {
-
-        $transaction = new Transaction(
-            834417,
-            19.99,
-            'EUR',
-            'http://euro.local/payments/zotto/return?order_number=834417',
-            'http://b.euro.local/payments/zotto/result',
-            'http://euro.local/payments/zotto/return?order_number=834417',
-            'http://euro.local/payments/zotto/return?order_number=834417',
-            'http://euro.local/payments/zotto/return?order_number=834417',
-            834417,
-            Transaction::CARD_REDIRECT_TYPE,
-            "ainur_ahmetgalie@mail.ru"
-        );
-
-        $html = $this->client->generatePaymentHtml($transaction);
-
-        $this->assertTrue(is_string($html));
 
     }
 }
