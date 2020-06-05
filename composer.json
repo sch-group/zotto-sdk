@@ -1,32 +1,34 @@
 {
-    "name": "sch-group/zotto-sdk",
-    "description": "Zotto payments api connector",
-    "type": "library",
-    "require": {
-        "php": ">=7.2",
-        "guzzlehttp/guzzle": "^6.2",
-        "ext-json": "*"
-    },
-    "require-dev": {
-        "guzzlehttp/guzzle": "^6.2",
-        "piwik/ini": "^2.0",
-        "phpunit/phpunit": "~6.5.5"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "aahmetgaliev",
-            "email": "ainur_ahmetgalie@mail.ru"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "SchGroup\\Zotto\\" : "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SchGroup\\Zotto\\Tests\\": "tests/"
-        }
+  "name": "sch-group/zotto-sdk",
+  "description": "Zotto payments api connector",
+  "type": "library",
+  "require": {
+    "php": ">=7.2",
+    "guzzlehttp/guzzle": "^6.2",
+    "ext-json": "*",
+    "ext-xml": "*",
+    "ext-dom": "*"
+  },
+  "require-dev": {
+    "guzzlehttp/guzzle": "^6.2",
+    "piwik/ini": "^2.0",
+    "phpunit/phpunit": "~6.5.5"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "aahmetgaliev",
+      "email": "ainur_ahmetgalie@mail.ru"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SchGroup\\Zotto\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SchGroup\\Zotto\\Tests\\": "tests/"
+    }
+  }
 }

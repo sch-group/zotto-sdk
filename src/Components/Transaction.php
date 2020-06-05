@@ -234,4 +234,11 @@ class Transaction
         return hash('sha256', $sentence);
     }
 
+    /**
+     * @return bool
+     */
+    public function isCardRedirectType(): bool
+    {
+        return $this->redirectType == self::CARD_REDIRECT_TYPE;
+    }
 }

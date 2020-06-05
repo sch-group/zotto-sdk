@@ -16,7 +16,6 @@ class InitTest extends TestCase
     protected $client;
 
 
-
     /**
      * InitTest constructor.
      * @param null $name
@@ -38,9 +37,9 @@ class InitTest extends TestCase
      * @return mixed
      * @throws \SchGroup\Zotto\Exceptions\ZottoCallMethodCallException
      */
-    protected function createInvoice()
+    protected function createSuccessTransaction(): Transaction
     {
-        $transaction = new Transaction(
+        return new Transaction(
             rand(0, 10000000) . "kek",
             100,
             'EUR',
@@ -52,8 +51,6 @@ class InitTest extends TestCase
             rand(0, 10000000) . "kek",
             Transaction::CARD_REDIRECT_TYPE
         );
-
-        return $this->client->generatePaymentHtml($transaction);
     }
 
 }
