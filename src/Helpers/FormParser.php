@@ -17,7 +17,7 @@ class FormParser
     public function obtainFormContent(string $html): string
     {
         $DOMDocument = new DOMDocument();
-        $DOMDocument->loadHTML($html);
+        @$DOMDocument->loadHTML($html);
         $forms = $DOMDocument->getElementsByTagName("form");
         $form = $forms->item(0);
 
@@ -31,7 +31,7 @@ class FormParser
     public function parseFormAttributes(string $html): PaymentForm
     {
         $DOMDocument = new DOMDocument();
-        $DOMDocument->loadHTML($html);
+        @$DOMDocument->loadHTML($html);
         $forms = $DOMDocument->getElementsByTagName("form");
         $form = $forms->item(0);
         $action = $form->getAttribute('action');

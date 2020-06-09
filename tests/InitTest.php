@@ -43,7 +43,7 @@ class InitTest extends TestCase
             rand(0, 10000000) . "kek",
             100,
             'EUR',
-            'https://www.google.com',
+            'https://www.google.com?order_id=835088&amount=22.88&status=success',
             'https://www.google.com',
             'https://www.google.com',
             'https://www.google.com',
