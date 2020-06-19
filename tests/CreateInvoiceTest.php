@@ -45,8 +45,8 @@ class CreateInvoiceTest extends InitTest
         $this->assertNotEmpty($form->getActionAttribute());
         $this->assertTrue(count($form->getHiddenInputs()) > 0);
     }
-    
-    
+
+
     /**
      * @throws ZottoCallMethodCallException
      */
@@ -68,5 +68,76 @@ class CreateInvoiceTest extends InitTest
 
         $link = $this->client->generatePaymentHtml($transaction);
 
+    }
+
+    /**
+     * @return mixed
+     * @throws \SchGroup\Zotto\Exceptions\ZottoCallMethodCallException
+     */
+    public function testBankOpening()
+    {
+        $transaction = new Transaction(
+            rand(0, 10000000) . "kek",
+            15,
+            'EUR',
+            'https://www.google.com?order_id=835088&amount=22.88&status=success',
+            'https://www.google.com',
+            'https://www.yandex.com',
+            'https://test-edu.ru/',
+            'https://www.google.com/',
+            rand(0, 10000000) . "kek",
+            Transaction::OPEN_BANKING_REDIRECT_TYPE
+        );
+
+        $html = $this->client->generatePaymentHtml($transaction);
+        $this->assertTrue(is_string($html));
+    }
+
+    /**
+     * @return mixed
+     * @throws \SchGroup\Zotto\Exceptions\ZottoCallMethodCallException
+     */
+    public function testPaymentLinkBanking()
+    {
+        $transaction = new Transaction(
+            rand(0, 10000000) . "kek",
+            15,
+            'EUR',
+            'https://www.google.com?order_id=835088&amount=22.88&status=success',
+            'https://www.google.com',
+            'https://www.yandex.com',
+            'https://test-edu.ru/',
+            'https://www.google.com/',
+            rand(0, 10000000) . "kek",
+            Transaction::OPEN_BANKING_REDIRECT_TYPE
+        );
+
+        $link = $this->client->generatePaymentLink($transaction);
+        $this->assertNotEmpty($link);
+        $this->assertTrue(is_string($link));
+    }
+
+    /**
+     * @return mixed
+     * @throws \SchGroup\Zotto\Exceptions\ZottoCallMethodCallException
+     */
+    public function testPaymentLinkCard()
+    {
+        $transaction = new Transaction(
+            rand(0, 10000000) . "kek",
+            15,
+            'EUR',
+            'https://www.google.com?order_id=835088&amount=22.88&status=success',
+            'https://www.google.com',
+            'https://www.yandex.com',
+            'https://test-edu.ru/',
+            'https://www.google.com/',
+            rand(0, 10000000) . "kek",
+            Transaction::CARD_REDIRECT_TYPE
+        );
+
+        $link = $this->client->generatePaymentLink($transaction);
+        $this->assertNotEmpty($link);
+        $this->assertTrue(is_string($link));
     }
 }

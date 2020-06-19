@@ -10,7 +10,9 @@ use SchGroup\Zotto\Exceptions\{WrongFormParseException, ZottoCallMethodCallExcep
 
 class ZottoConnector
 {
+    const PAYMENT_LINK_URI = "/api/v1/checkoutlink/intermediate/";
 
+    const CREATE_PAYMENT_HTML = "/api/v1/checkoutpay/payment";
     /**
      * @var Client
      */
@@ -119,11 +121,30 @@ class ZottoConnector
     }
 
     /**
+     * @param Transaction $transaction
+     * @return string|null
+     * @throws ZottoCallMethodCallException
+     */
+    public function generatePaymentLink(Transaction $transaction): ?string
+    {
+        $this->generatePaymentHtml($transaction);
+
+        $paymentLink = $this->config->getHost() . self::PAYMENT_LINK_URI . $transaction->getOrderNumber();
+
+        $params = http_build_query([
+            'ukey' => $transaction->getUniqueUserId(),
+            'redirect_type' => $transaction->getRedirectType()
+        ]);
+
+        return $paymentLink . "?" . $params;
+    }
+
+    /**
      * @return string
      */
     private function generateTransactionHtmlUrl(): string
     {
-        return $this->config->getHost() . '/api/v1/checkoutpay/payment';
+        return $this->config->getHost() . self::CREATE_PAYMENT_HTML;
     }
 
     /**
