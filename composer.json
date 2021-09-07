@@ -4,13 +4,13 @@
   "type": "library",
   "require": {
     "php": ">=7.2",
-    "guzzlehttp/guzzle": "^6.2",
+    "guzzlehttp/guzzle": ">=6.2",
     "ext-json": "*",
     "ext-xml": "*",
     "ext-dom": "*"
   },
   "require-dev": {
-    "guzzlehttp/guzzle": "^6.2",
+    "guzzlehttp/guzzle": ">=6.2",
     "piwik/ini": "^2.0",
     "phpunit/phpunit": "~6.5.5"
   },
